@@ -63,10 +63,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [token, setToken] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Set up axios defaults - use current hostname for network access
+  // Set up axios defaults - use environment variable or fallback to localhost
   const getApiBaseUrl = () => {
-    const hostname = window.location.hostname;
-    return `http://${hostname}:3001`;
+    // Use environment variable for production, fallback to localhost for development
+    return import.meta.env.VITE_API_URL || `http://${window.location.hostname}:3001`;
   };
   
   axios.defaults.baseURL = getApiBaseUrl();

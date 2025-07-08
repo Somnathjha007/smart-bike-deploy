@@ -23,9 +23,9 @@ export default function BatteryCard() {
 
   useEffect(() => {
     let newSocket: Socket | null = null;
-    const hostname = window.location.hostname;
-    const port = 3001;
-    newSocket = io(`http://${hostname}:${port}`, {
+    // Use environment variable for production, fallback to localhost for development
+    const socketUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:3001`;
+    newSocket = io(socketUrl, {
       transports: ["websocket"],
       reconnection: true,
       reconnectionAttempts: 5,

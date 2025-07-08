@@ -51,10 +51,10 @@ export default function EcommerceMetrics({ cardTitles }: EcommerceMetricsProps) 
     let newSocket: Socket | null = null;
     
     try {
-      const hostname = window.location.hostname;
-      const port = 3001; // You can move this to environment variable if needed
+      // Use environment variable for production, fallback to localhost for development
+      const socketUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:3001`;
       
-      newSocket = io(`http://${hostname}:${port}`, {
+      newSocket = io(socketUrl, {
         transports: ["websocket"],
         reconnection: true,
         reconnectionAttempts: 5,

@@ -39,8 +39,9 @@ export default function RecentOrders() {
   const guardianBikeIds = guardian?.wards?.map(ward => ward.bikeId) || [];
 
   useEffect(() => {
-    const hostname = window.location.hostname;
-    const newSocket = io(`http://${hostname}:3001`, {
+    // Use environment variable for production, fallback to localhost for development
+    const socketUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:3001`;
+    const newSocket = io(socketUrl, {
       transports: ["websocket"],
       reconnection: true,
       reconnectionAttempts: 5,
