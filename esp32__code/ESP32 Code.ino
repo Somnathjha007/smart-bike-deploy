@@ -7,12 +7,12 @@
 // Configuration constants
 const char* DEFAULT_SSID = "Som";
 const char* DEFAULT_PASSWORD = "Password123";
-// Production server configuration
-const char* DEFAULT_SERVER_HOST = "your-deployed-server.herokuapp.com"; // Update with your deployed server URL
-const int DEFAULT_SERVER_PORT = 80; // Use 80 for HTTP or 443 for HTTPS
+// Production server configuration (Railway deployment)
+const char* DEFAULT_SERVER_HOST = "your-app-name.up.railway.app"; // Replace with your Railway URL
+const int DEFAULT_SERVER_PORT = 443; // Use 443 for HTTPS
 
-// Alternative: Use IP address if you have a static IP
-// const char* DEFAULT_SERVER_HOST = "your.server.ip.address";
+// Alternative: Local development
+// const char* DEFAULT_SERVER_HOST = "10.107.255.99";
 // const int DEFAULT_SERVER_PORT = 3001;
 const char* DEFAULT_BIKE_ID = "BIKE001";
 
@@ -277,7 +277,13 @@ void initializeTime() {
 }
 
 String buildServerUrl(const char* endpoint) {
-  return "http://" + config.serverHost + ":" + String(config.serverPort) + endpoint;
+  // Use HTTPS for production deployment
+  if (config.serverPort == 443) {
+    return "https://" + config.serverHost + endpoint;
+  } else {
+    // Use HTTP for local development
+    return "http://" + config.serverHost + ":" + String(config.serverPort) + endpoint;
+  }
 }
 
 void checkServerHealth() {

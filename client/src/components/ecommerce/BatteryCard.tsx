@@ -17,7 +17,7 @@ interface BikeData {
 }
 
 export default function BatteryCard() {
-  const [socket, setSocket] = useState<Socket | null>(null);
+  // const [socket, setSocket] = useState<Socket | null>(null);
   const [battery, setBattery] = useState<number | null>(null);
   const [isConnected, setIsConnected] = useState(false);
 
@@ -41,7 +41,7 @@ export default function BatteryCard() {
         setBattery(data.data.battery);
       }
     });
-    setSocket(newSocket);
+    // setSocket(newSocket);
     return () => {
       if (newSocket) newSocket.close();
     };

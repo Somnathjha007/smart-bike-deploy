@@ -4,7 +4,7 @@ import {
   ArrowDownIcon,
   ArrowUpIcon,
   BoxIconLine,
-  GroupIcon,
+  // GroupIcon,
   BoltIcon,
   PaperPlaneIcon,
   BoxIcon,
@@ -35,7 +35,7 @@ interface BikeData {
 }
 
 export default function EcommerceMetrics({ cardTitles }: EcommerceMetricsProps) {
-  const [socket, setSocket] = useState<Socket | null>(null);
+  // const [socket, setSocket] = useState<Socket | null>(null);
   const [isConnected, setIsConnected] = useState(false);
   const [latestData, setLatestData] = useState<BikeData | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -89,7 +89,7 @@ export default function EcommerceMetrics({ cardTitles }: EcommerceMetricsProps) 
         }
       });
 
-      setSocket(newSocket);
+      // setSocket(newSocket);
     } catch (err) {
       console.error("Error setting up WebSocket:", err);
       setError(`Setup error: ${err instanceof Error ? err.message : 'Unknown error'}`);
