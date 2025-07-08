@@ -1,0 +1,14 @@
+[
+  {
+    "bikeId": "BIKE001",
+    "lastSeen": "2025-07-08T05:33:08.056Z",
+    "currentLocation": {
+      "lat": 19.07628,
+      "lng": 72.88011
+    },
+    "avgSpeed": 17.28,
+    "batteryLevel": 68,
+    "createdAt": "2025-07-07T18:21:20.380Z",
+    "status": "active"
+  }
+]
